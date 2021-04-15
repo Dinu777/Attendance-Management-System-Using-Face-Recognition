@@ -1,0 +1,15 @@
+click                   
+dlib                   
+face-recognition       
+Flask                  
+itsdangerous           
+Jinja2                 
+MarkupSafe             
+numpy    
+opencv-contrib-python              
+Pillow                 
+python-dateutil       
+pytz                   
+setuptools              
+six                    
+Werkzeug               
