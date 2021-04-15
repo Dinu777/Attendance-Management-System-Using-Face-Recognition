@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>.ai - Home</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}" />
+{% endblock %}
+
+
+{% block body %}
+
+{% for message in get_flashed_messages() %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+
+<div class="form">
+  <div class="container">
+    <div class="title">Login</div>
+    <div class="content">
+      <form method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+          </div>
+          <div class="button">
+            <input type="submit" value="Log In">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

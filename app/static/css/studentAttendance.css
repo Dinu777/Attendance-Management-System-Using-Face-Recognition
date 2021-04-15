@@ -1,0 +1,129 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman';
+}
+
+.session {
+  background: #fff;
+  height: 50px;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.logout {
+  color: #111;
+  float: right;
+  padding-right: 5%;
+  padding-top: 15px;
+}
+
+.form{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.container{
+  max-width: 500px;
+  width: 100%;
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.container .title{
+  font-size: 28px;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 45px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+form .user-details .input-box{
+  margin-bottom: 25px;
+  width: calc(100% / 2 - 20px);
+}
+
+form .input-box span.details{
+  display: block;
+  font-weight: 400;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.option {
+  height: 45px;
+  width: 180%;
+  outline: none;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+}
+
+.user-details .input-box input{
+  height: 45px;
+  width: 180%;
+  outline: none;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+  border-color: #9b59b6;
+}
+
+form .button{
+  height: 45px;
+  margin: 35px 0
+}
+
+form .button input{
+  background-color: transparent;
+  display: block;
+  margin: 20px 0px;
+  margin-left: 140px;
+  border-radius: 50px;
+  border: solid #9b59b6;
+  height: 110%;
+  width: 38%;
+  font-size: 21px;
+  font-weight: 600;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.25px;
+}
+
+button{
+  border: 5px;
+  margin-bottom: 580px;
+  margin-left: -15px;
+  padding: 7px;
+  width: 60px;
+  border: solid black;
+  font-size: 20px;
+  border-radius: 10px;
+  font-weight: 500;
+}

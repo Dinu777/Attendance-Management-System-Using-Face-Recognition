@@ -1,0 +1,157 @@
+* {
+    font-family: montserrat;
+
+}
+
+.alert {
+    /* padding-top: 50px;
+    padding-bottom: 50px;
+    border: 1px solid black; */
+    align-items: center;
+    margin-left: 45%;
+    margin-top: 10px;
+    z-index: 2;
+    /* justify-content: center; */
+    display: flex ;
+}
+
+/* Button Design */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid black;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 50px;
+    font-size: 1.25rem;
+    position: relative;
+    margin: 32px;
+    color: #000;
+}
+
+.btn::after, .btn::before {
+    border: 2px solid #000;
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover::after {
+    transform: translate(-5px, -5px);
+}
+
+.btn:hover::before {
+    transform: translate(5px, 5px);
+}
+/* End of Button Design */
+
+
+/* Attendance Report Design */
+.rep-form{
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form__title, .form__div {
+    padding-bottom: 30px;
+}
+
+.sub-btn {
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 50px;
+    font-size: 1.25rem;
+    position: relative;
+    margin: 32px;
+    background: #fff;
+    color: #000;
+}
+
+.form__input {
+    width: 150px;
+    height: 30px;
+}
+/* End of  Attendance Report Design */
+
+
+/* IPad View */
+@media only screen and (min-width: 768px) {
+    .container {  
+        border-bottom: 3px solid black;
+    }
+
+    .btn::after, .btn::before {
+        border: 3px solid #000;
+    }
+
+    .rep-form{
+        border-bottom: 3px solid black;
+    }
+
+    .form__input {
+        width: 200px;
+        height: 30px;
+    }
+}
+/* End of IPad View */
+
+
+/* Desktop view */
+@media only screen and (min-width: 1000px) {
+    .container {
+        width: 50%;
+        float: left;
+        border-bottom: none;
+    }
+    
+    /* .container::after {
+        content: "";
+        background-color: #000;
+        position: absolute;
+        width: 3px;
+        height: 450px;
+        top: 25%;
+        left: 50%;
+        display: block;
+    } */
+
+    .rep-form {
+        width: 50%;
+        float: right;
+        border-bottom: none;
+    }
+
+    .form__label {
+        font-size: 22px;
+    }
+
+    .form__input {
+        width: 200px;
+        height: 30px;
+    }
+}
+/* End of Desktop view */

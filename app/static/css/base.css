@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: montserrat;
+}
+
+
+/* Top Banner */
+.banner {
+    background: #fff;
+    height: 80px;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-top: 1px solid black;
+}
+
+label.name {
+    display: none;
+}
+
+label.logo {
+    color: #111;
+    font-size: 38px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+/* End of Banner */
+
+
+/* IPad View */
+@media only screen and (min-width: 768px) {
+    .banner {
+        height: 120px;
+        width: 100%;
+        border-bottom: 3px solid black;
+        border-top: 3px solid black;
+    }
+
+    label.name {
+        display:initial;
+        color: #111;
+        font-size: 44px;
+        line-height: 120px;
+        padding: 0 50px;
+        font-weight: bold;
+    }
+
+    label.logo {
+        display: none;
+    }
+}
+

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>.ai - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}" />
+{% endblock %}
+
+{% block body %} 
+
+{% for message in get_flashed_messages() %}
+    <div class="alert">
+        <p class="flash">{{ message }}</p><br>
+    </div>
+{% endfor %}
+
+
+    <div class="container">
+        <div class="buttons">
+            <a href="{{ url_for('auth.login') }}" class="btn">Login</a>
+            <a href="{{ url_for('auth.staffAttendance') }}" class="btn">Staff/Faculty Attendance</a>
+            <a href="{{ url_for('about') }}" class="btn">About Us</a>
+        </div>
+    </div>
+    <div class="rep-form">
+        <form method="POST" action="{{ url_for('download') }}" class="form">
+            <h1 class="form__title">Attendance Report</h1>
+
+            <div class="form__div">
+                <input type="date" name="date" id="date" class="form__input" placeholder=" " required>
+                <label for="" class="form__label">&Tab;Select Date</label>
+            </div>
+            <div class="form__div">
+                <select class="form__input" name="course" id="course" required>
+                        <option selected value="staff">Staff</option>
+                        <option value="bscit">BSc IT</option>
+                        <option value="bsccs">BSc CS</option>
+                        <option value="bcom">BCom</option>
+                </select>
+                <label for="" class="form__label">&Tab;Select Course</label>
+            </div>
+            <div class="form__div">
+                <select class="form__input" name="year" id="year">
+                        <option selected value="">Staff</option>
+                        <option value="fy">FY</option>
+                        <option value="sy">SY</option>
+                        <option value="ty">TY</option>
+                </select>
+                <label for="" class="form__label">&Tab;Select Year</label>
+            </div>
+            <input type="submit" class="sub-btn" value="Download">
+            
+            
+        </form>
+    </div>
+{% endblock %}

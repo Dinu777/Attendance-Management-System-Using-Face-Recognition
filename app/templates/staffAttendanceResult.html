@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+
+{% block head %} 
+
+    <title>.ai - Home</title>
+    <meta http-equiv="refresh" content="3;url=/home"/>
+    
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="result">
+        <h2> Attendance taken for <br>{{ name }}</h2>
+    </div>
+    <style>
+        .result{
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2{
+            margin-left:20px;
+            margin-top:80px;
+        }
+        /* IPad View */
+        @media only screen and (min-width: 768px) {
+            h2{
+                margin-left:37%;
+                margin-top: 12%; 
+                font-size: 34px;
+
+            }
+        }
+        /* End of IPad View */
+
+
+        /* Desktop view */
+        @media only screen and (min-width: 1000px) {
+            .container {
+                width: 50%;
+                float: left;
+                border-bottom: none;
+            }
+            
+            /* .container::after {
+                content: "";
+                background-color: #000;
+                position: absolute;
+                width: 3px;
+                height: 450px;
+                top: 25%;
+                left: 50%;
+                display: block;
+            } */
+
+            .rep-form {
+                width: 50%;
+                float: right;
+                border-bottom: none;
+            }
+
+            .form__label {
+                font-size: 22px;
+            }
+
+            .form__input {
+                width: 200px;
+                height: 30px;
+            }
+        }
+        /* End of Desktop view */
+
+    </style>
+
+{% endblock %}

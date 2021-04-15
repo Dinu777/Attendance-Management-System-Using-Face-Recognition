@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+
+{% block head %} 
+
+<title>.ai - Staff Registration</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/staffRegister.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/select2.min.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-multiselect.min.css')}}" />
+
+<script src="{{ url_for('static', filename='js/jquery.min.js')}}" ></script>
+<script src="{{ url_for('static', filename='js/select2.min.js')}}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap-multiselect.min.js')}}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}" ></script>
+
+{% endblock %}
+
+
+{% block body %} 
+
+{% if g.user['role'] != 'admin' %}
+<script>
+    window.location.href = "{{ url_for('auth.login') }}";
+</script>
+{% endif %}
+
+{% for message in get_flashed_messages() %}
+  <span class="flash">{{ message }}</span>
+{% endfor %}
+
+
+<div class="form">
+    <div class="container">
+      <div class="title">Staff Registration</div>
+      <div class="content">
+        <form method="POST">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Name</span>
+              <input type="text" name="name" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Role</span>
+              <select class="option" id="role" name="role" required>
+                <option value="None" disabled="disabled" selected="selected">Select role</option>
+                <option value="admin">Admin</option>
+                <option value="faculty">Faculty</option>
+                <option value="staff">Staff</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input type="text" name="username" id="username" placeholder="Enter your username" >
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" name="password" id="password" placeholder="Enter your password" >
+            </div>
+
+
+            <div class="input-box">
+              <span class="details">Email Id</span>
+              <input type="email" name="email" id="email" placeholder="Enter your email" >
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="number" name="number" id="number" placeholder="Enter your number" >
+            </div>
+
+
+            <!-- <div class="row justify-content-center align-items-center h-100">
+
+              <div class="form-group">
+                <h5 class="sub">Subject</h5>
+                <select class="mul-select" name="subject" id="subject" multiple placeholder="none">
+                  <option value="1">Technical Communication Skill </option>
+                  <option value="2"> Data Structure Using C Language</option>
+                  <option value="3">Problem Solving Methodologies & Programming in C</option>
+                  <option value="4"> Web Programming</option>
+                  <option value="5"> Computer Fundamentals and Emerging Technology</option>
+                  <option value="6">Computer Organization and Architecture</option>
+                  <option value="7"> Networking and Internet Environment</option>
+                  <option value="8">Project Development </option>
+                  <option value="9">Network Management and Information Security</option>
+                  <option value="10">Software Testing and Project Management </option>
+                  <option value="11"> MS SQL Server Database Administration</option>
+                  <option value="12">Advanced Java Programming</option>
+                  <option value="13">Programming with ASP.NET </option>
+                  <option value="14">Programming with C#.NET </option>
+                  <option value="15">Operating Systems Concepts with Unix/Linux</option>
+                  <option value="16"> Content Management System Using Joomla</option>
+                  <option value="17">Network Technology & Administration </option>
+                  <option value="18">SAD, Software Quality Assurance & Testing></option>
+                  <option value="19"> Programming with C#</option>
+                  <option value="20">C++ and Object-oriented Programming</option>
+                  <option value="21">Programming with Java></option>
+                </select>
+              </div>
+            </div> -->  
+
+            <div class="row justify-content-center align-items-center h-100">
+              <div class="form-group">
+                <h5 class="sub">Subject</h5>
+                <select class="mul-select" name="subject" id="subject" multiple placeholder="none">
+                  
+                  {% for i in subject %}  
+                  <option value="{{ i }}">{{ i }}</option>
+                  {% endfor %}
+                
+                </select>
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Register">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $(".mul-select").select2({
+        placeholder: "Select Subject", //placeholder
+        tags: true,
+        tokenSeparators: ['/', ',', ';', " "]
+      });
+    })
+  </script>
+
+
+{% endblock %}

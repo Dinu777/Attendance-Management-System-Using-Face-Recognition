@@ -1,0 +1,89 @@
+* {
+    font-family: montserrat;
+}
+
+.session {
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.logout {
+    color: #111;
+    float: right;
+    padding-right: 5%;
+    padding-top: 15px;
+}
+
+/* Button Design */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 50px;
+    font-size: 1.25rem;
+    position: relative;
+    margin: 32px;
+    color: #000;
+}
+
+.btn::after, .btn::before {
+    border: 2px solid #000;
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover::after {
+    transform: translate(-5px, -5px);
+}
+
+.btn:hover::before {
+    transform: translate(5px, 5px);
+}
+/* End of Button Design */
+
+
+
+
+/* IPad View */
+@media only screen and (min-width: 768px) {
+    .btn::after, .btn::before {
+        border: 3px solid #000;
+    }
+}
+/* End of IPad View */
+
+
+/* Desktop view */
+@media only screen and (min-width: 1000px) {
+    .section1 {
+        width: 50%;
+        float: left;
+    }
+
+    .section2 {
+        width: 50%;
+        float: right;
+    }
+}
+/* End of Desktop view */

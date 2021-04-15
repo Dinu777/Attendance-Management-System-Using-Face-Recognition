@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/staff_view_update_delete.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/select2.min.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-multiselect.min.css')}}" />
+
+<script src="{{ url_for('static', filename='js/jquery.min.js')}}" ></script>
+<script src="{{ url_for('static', filename='js/select2.min.js')}}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap-multiselect.min.js')}}" ></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}" ></script>
+{% endblock %}
+
+
+{% block body %}
+<div class="form">
+    <div class="title">Staff-View/Update/Delete</div><br>
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('auth.staffEditTrans') }}" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Name</span>
+                        <input id="name" name="name" value="{{ name }}" type="text" placeholder="Enter your Name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Username</span>
+                        <input id="username" name="username" value="{{ username }}" type="text" placeholder="Enter your username" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input id="password" name="password" type="password" placeholder="Enter your password" required>
+                    </div>
+                
+            
+                    <div class="input-box">
+                        <span class="details">Email Id</span>
+                        <input id="email" name="email" value="{{ email }}" type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input id="phone" name="phone" value="{{ phone }}" type="number" placeholder="Enter your number" required>
+                    </div>
+
+                    {% if role == 'faculty' %}
+                    <div class="row justify-content-center align-items-center h-100">
+                
+                        <div class="form-group">
+                            <h5 class="sub">Subject</h5>
+                            <select class="mul-select" id="subject" name="subject" multiple placeholder="none">
+                                {% for sub in subjectlist %}
+
+                                {% if sub in subjects %}
+                                    <option selected value="{{sub}}">{{ sub }}</option>
+                                {% else %}
+                                    <option value="{{sub}}">{{ sub }}</option>
+                                {% endif %}
+
+                                {% endfor %}
+                            </select>
+                    
+                        </div>
+                    </div>
+                    {% endif %}
+                
+                    <div class="button">
+                        <input type="submit" value="Save">
+                    </div>
+                   
+            </form>
+            <script>
+                $(document).ready(function(){
+                    $(".mul-select").select2({
+                            placeholder: "Select Subject", //placeholder
+                            tags: true,
+                            tokenSeparators: ['/',',',';'," "] 
+                        });
+                    })
+            </script>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block head %} 
+    <title>.ai - Student Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/studentRegister.css')}}" />
+{% endblock %}
+
+
+{% block body %}
+
+{% if g.user['role'] != 'admin' %}
+<script>
+    window.location.href = "{{ url_for('auth.login') }}";
+</script>
+{% endif %}
+
+{% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+<div class="wrapper"> 
+    <div class="container">
+        <div class="title">Student Registration</div>
+        <div class="content">
+        <form method="post">
+            <div class="user-details">
+            <div class="input-box">
+                <span class="details">Name</span>
+                <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+            </div>
+            <div class="input-box">
+                <span class="details">PRN No:</span>
+                <input type="text" name="prn" id="prn" placeholder="Enter your Prn no." required>
+            </div>
+            <div class="input-box">
+                <span class="details">Roll No:</span>
+                <input type="text" name="rollNo" id="rollNo" placeholder="Enter your Roll no." required>
+            </div>
+            <div class="input-box">
+                <span class="details">Course</span>
+                <select name="course" id="course" class="option" required> 
+                    <option disabled="disabled" selected="selected"></option>
+                    <option value="bscit"> Bsc IT </option>
+                    <option value="bsccs"> Bsc CS </option>
+                    <option value="bcom"> B.Com </option>
+                </select>
+            </div>
+            <div class="input-box">
+                <span class="details">Year</span>
+                <select class="option" name="year" id="year" required>
+                    <option disabled="disabled" selected="selected"></option>
+                    <option value="fy">FY</option>
+                    <option value="sy">SY</option>
+                    <option value="ty">TY</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <span class="details">Email Id</span>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" name="phone" id="phone" placeholder="Enter your number" >
+            </div>
+            </div>
+            <div class="button">
+            <input type="submit" value="Register">
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

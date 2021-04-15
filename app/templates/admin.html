@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+    <title>.ai - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css')}}" />
+{% endblock %}
+
+
+{% block body %} 
+    
+    {% if g.user['role'] == 'admin' %}
+
+    <nav class="session">
+        <!-- <span>{{ g.user['role'] }}</span> -->
+        <label><a class="logout" href="{{ url_for('auth.logout') }}">LogOut</a></label>
+    </nav>
+
+    {% else %}
+
+    <script>
+        window.location.href = "{{ url_for('auth.login') }}";
+    </script>
+    
+    {% endif %}
+    
+
+    <div class="section1">
+        <div class="container">
+            <div class="buttons">
+                <a href="{{ url_for('auth.studentRegister') }}" class="btn">Student Registration</a>
+                <a href="{{ url_for('auth.studentCURD') }}" class="btn">Student - View / Update / Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="section2">
+        <div class="container">
+            <div class="buttons">
+                <a href="{{ url_for('auth.staffRegister') }}" class="btn">Staff Registration</a>
+                <a href="{{ url_for('auth.staffCURD') }}" class="btn">Staff - View / Update / Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

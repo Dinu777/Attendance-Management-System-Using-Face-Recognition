@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<title>.ai - CURD</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/student_view_update_delete.css') }}">
+
+{% endblock %}
+
+
+{% block body %} 
+
+    {% if g.user['role'] != 'admin' %}
+    <script>
+        window.location.href = "{{ url_for('auth.login') }}";
+    </script>
+    {% endif %}
+
+
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+
+
+    <div class="curd">
+        <div class="title">Student-View/Update/Delete</div><br>
+        <form method="POST">
+            <span>PRN No:</span>
+            <input id="prn" name="prn" type="text" placeholder="Enter your pnr no">
+            <input type="submit" value="Submit" class="btn">
+        </form>
+        <div class="container">
+            <div class="content">
+                <form action="{{ url_for('auth.studentEdit') }}" method="POST">
+                    <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Name</span>
+                        <input type="text" id="name" name="name" value='{{name}}' readonly>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Roll No:</span>
+                        <input type="text" id="roll" name="roll" placeholder="Enter your number" value="{{roll}}" readonly>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Course</span>
+                        <select class="option" id="course" name="course" name="Course"> 
+                            <option value="{{course}}" selected="selected">{{course}}</option>
+                            <!-- <option value="bscit">Bsc IT</option>
+                            <option value="bsccs">Bsc CS</option>
+                            <option value="bcom">B.Com</option> -->
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Year</span>
+                        <select class="option" id="year" name="year" name="year">
+                            <option value="{{year}}" selected="selected">{{year}}</option>
+                            <!-- <option value="fy">FY</option>
+                            <option value="sy">SY</option>
+                            <option value="ty">TY</option> -->
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email Id</span>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" value="{{ email }}" readonly>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone No:</span>
+                        <input type="text" id="phone" name="phone" placeholder="Enter your number" value="{{ phone }}" readonly>
+                    </div>
+                    <div class="button">
+                        <a href="{{ url_for('admin') }}"><input type="button" value="Back"></a>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Edit">
+                    </div>
+                    <div class="button">
+                        <input type="button" onclick="document.getElementById('id01').style.display='block'" value="Delete">
+                    </div>
+                    <div class="button">
+                        <input type="button" onclick="document.getElementById('id02').style.display='block'" value="Face Edit">
+                    </div>
+                </form>  
+            </div>
+        </div>
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+            <form class="modal-content" action="{{ url_for('auth.studentDelete') }}" method="POST">
+                <div class="form-box">
+                    <h1>Delete Student Data</h1>
+                    <p>Are you sure you want to delete?</p>
+                    <input type="text" id="prn" name="prn" value="{{ prn }}" />
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                        <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
+                    </div>
+                </div>
+            </form>
+            <script>
+                // Get the modal
+                var modal = document.getElementById('id01');
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    }
+                }
+            </script>
+        </div>
+        <div id="id02" class="modal">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
+            <form class="modal-content" action="{{ url_for('auth.studentFaceRegisterTrans') }}" method="POST">
+                <div class="form-box">
+                    <h1>Edit Student Face Data</h1>
+                    <p>Are you sure you want to Edit Face?</p>
+                    <input type="text" id="prn" name="prn" value="{{ prn }}" >
+                    <input type="text" id="year" name="year" value="{{ year }}" >
+                    <input type="text" id="course" name="course" value="{{ course }}" />
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                        <button type="submit" onclick="document.getElementById('id02').style.display='none'" class="deletebtn">Face-Edit</button>
+                    </div>
+                </div>
+            </form>
+            <script>
+                // Get the modal
+                var modal = document.getElementById('id02');
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    }
+                }
+            </script>
+        </div>
+    </div>
+
+{% endblock %}

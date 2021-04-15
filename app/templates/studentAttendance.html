@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/studentAttendance.css')}}" />
+
+{% endblock %}
+
+
+{% block body %} 
+
+    {% if g.user['role'] == 'faculty' %}
+
+        <nav class="session">
+            <!-- <span>{{ g.user['role'] }}</span> -->
+            <label><a class="logout" href="{{ url_for('auth.logout') }}">LogOut</a></label>
+        </nav>
+
+    {% else %}
+
+        <script>
+            window.location.href = "{{ url_for('auth.login') }}";
+        </script>
+        
+    {% endif %}
+
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    <div class="form">
+    <div class="container">
+        <div class="title">Student Attendance</div>
+        <div class="content">
+            <form action="{{url_for('auth.studentAttendance')}}" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Faculty Name</span>
+                        <input type="text" id="name" name="name" value="{{ name }}" readonly>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Subject</span>
+                        <select class="option" id="subject" name="subject" required> 
+                            <option disabled="disabled" selected="selected"></option>
+                            {% for sub in subject %}
+                                <option value="{{sub}}">{{ sub }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Detect">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+      
+{% endblock %}

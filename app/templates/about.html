@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Attendance.ai - About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}" />
+{% endblock %}
+
+{% block body %} 
+<div class="card-body">
+    <h5 class="card-title">Auto-Attendance Management System Using Face Recognition</h5>
+    <p class="card-text">We are using Automatic Attendance process which based on image processing.In this project we are using Face
+      Recognition System.First Face Detection is processed through the step image processing. Second is feature extraction,
+      then step by step execution of these process helps to achieve final output. The working of this project is to detect and
+      recognize face and mark attendance for the particular face and save in it database. It is designed to be reliable and low power.</p>
+  </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-4 py-3 py-sm-0">
+            <div class="card box-shadow">
+                <img src="{{ url_for('static', filename='img/about/chandani.jpg')}}" class="card-img-top" alt="...">
+                <h3 class="card-box">Yadav Chandani Ramdhiraj</h3>
+            </div>
+        </div>
+        <div class="col-sm-4 py-3 py-sm-0 ">
+            <div class="card box-shadow">
+                <img src="{{ url_for('static', filename='img/about/dinesh.png')}}"  class="card-img-top" alt="...">
+                <h3 class="card-box">Nayak Dinesh Dayanand</h3>
+            </div>
+        </div>
+        <div class="col-sm-4 py-3 py-sm-0">
+            <div class="card box-shadow">
+                <img class="card-img-top" src="{{ url_for('static', filename='img/about/hishma.jpg')}}" alt="...">
+                <h3 class="card-box">Ansari Hishmah Nadeem</h3>
+            </div>
+        </div>
+
+    </div>
+  </div>
+{% endblock %}

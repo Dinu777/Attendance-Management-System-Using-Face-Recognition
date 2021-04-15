@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<title>.ai - CURD</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/student_view_update_delete.css') }}">
+{% endblock %}
+
+
+{% block body %} 
+{% if g.user['role'] != 'admin' %}
+    <script>
+        window.location.href = "{{ url_for('auth.login') }}";
+    </script>
+    {% endif %}
+
+
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+
+    <div class="curd">
+        <div class="title">Student-View/Update/Delete</div><br>
+        
+        <div class="container">
+            <div class="content">
+                <form action="{{ url_for('auth.staffEditTrans') }}" method="POST">
+                    <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Name</span>
+                        <input type="text" id="name" name="name" value='{{name}}' >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Roll No:</span>
+                        <input type="text" id="roll" name="roll" placeholder="Enter your number" value="{{roll}}" >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Course</span>
+                        <select class="option" id="course" name="course" name="Course"> 
+                            <option value="{{course}}" selected="selected">{{course}}</option>
+                            <option value="bscit">Bsc IT</option>
+                            <option value="bsccs">Bsc CS</option>
+                            <option value="bcom">B.Com</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Year</span>
+                        <select class="option" id="year" name="year" name="year">
+                            <option value="{{year}}" selected="selected">{{year}}</option>
+                            <option value="fy">FY</option>
+                            <option value="sy">SY</option>
+                            <option value="ty">TY</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email Id</span>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" value="{{ email }}" >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone No:</span>
+                        <input type="text" id="phone" name="phone" placeholder="Enter your number" value="{{ phone }}" >
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Save">
+                    </div>
+                    
+                </form>  
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
